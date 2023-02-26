@@ -1,26 +1,32 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, {useState} from 'react';
+import './App.module.css';
+import s from "./App.module.css"
+import {Button} from "./components/Button";
+import {Desktop} from "./components/Desktop";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const initialState = 0
+    const maxCount = 5
+    const [count, setCount] = useState<number>(initialState)
+
+    const increment = () => {
+        count !== maxCount && setCount(count + 1)
+    }
+
+    const reset = () => setCount(initialState)
+    const isDisabledInc = count === maxCount
+    const isDisabledReset = count === initialState
+    return (
+        <div className={s.container}>
+            <div className={s.App}>
+                <Desktop count={count} error={isDisabledInc}/>
+                <div className={s.buttonsWrapper}>
+                    <Button callback={increment} title={'inc'} disabled={isDisabledInc}/>
+                    <Button callback={reset} title={'reset'} disabled={isDisabledReset}/>
+                </div>
+            </div>
+        </div>
+    );
 }
 
 export default App;

@@ -1,0 +1,19 @@
+.desktop {
+    height: 150px;
+    width: 300px;
+    background-color: #61dafb;
+    margin: 0 auto;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.counter {
+    font-size: 105px;
+    font-weight: bold;
+}
+
+.overCount {
+    font-size: 105px;
+    font-weight: bold;
+    color: red;
+}
